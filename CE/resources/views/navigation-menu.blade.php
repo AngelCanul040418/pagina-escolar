@@ -77,7 +77,7 @@
                             @else
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
-                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-gradient-to-t from-red-800 to-red-700 hover:text-gray-700 focus:outline-none focus:bg-red-700 transition ease-in-out duration-150">
+                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-300 bg-gradient-to-t from-red-800 to-red-700 hover:text-white focus:outline-none focus:bg-red-700 transition ease-in-out duration-150">
                                         {{ Auth::user()->name }}
                                         <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -93,13 +93,13 @@
                             <!-- Dropdown Content -->
                             <div class="rounded-lg shadow-lg divide-y divide-red-800">
                                 <!-- Account Management -->
-                                <div class="block px-4 py-2 text-xs text-red-800">
+                                <div class="block px-4 py-2 text-xl text-[#05031b]">
                                     {{ __('Ajustes') }}
                                 </div>
 
                                 <!-- Links -->
                                 <x-dropdown-link href="{{ route('profile.show') }}"
-                                    class="text-red-800 hover:bg-red-800 hover:text-white focus:outline-none focus:bg-red-700 transition ease-in-out duration-150">
+                                    class="text-lg text-red-800 hover:bg-red-800 hover:text-white focus:outline-none focus:bg-red-700 transition ease-in-out duration-150">
                                     {{ __('Perfil') }}
                                 </x-dropdown-link>
 
@@ -110,13 +110,11 @@
                                     </x-dropdown-link>
                                 @endif
 
-                                <div class="border-t border-red-600"></div>
-
                                 <!-- Logout -->
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
                                     <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();"
-                                        class="text-red-800 hover:bg-red-800 hover:text-white focus:outline-none focus:bg-red-700 transition ease-in-out duration-150">
+                                        class="text-lg text-red-800 hover:bg-red-800 hover:text-white focus:outline-none focus:bg-red-700 transition ease-in-out duration-150">
                                         {{ __('Cerrar sesión') }}
                                     </x-dropdown-link>
                                 </form>
