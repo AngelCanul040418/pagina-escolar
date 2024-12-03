@@ -12,7 +12,7 @@
                 /* Azul para el fondo de la card externa */
                 border-radius: 10px;
                 padding: 30px;
-                max-width: 500px;
+                max-width: 640px;
                 margin: 50px auto;
                 box-shadow: 0 8px 16px rgba(97, 40, 40, 0.3);
                 /* Sombra más marcada */

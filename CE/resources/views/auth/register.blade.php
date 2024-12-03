@@ -75,7 +75,7 @@
             background: #05031b;
             border-radius: 10px;
             padding: 30px;
-            max-width: 500px;
+            max-width: 640px;
             margin: 50px auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             animation: fadeIn 0.5s ease-in-out;
