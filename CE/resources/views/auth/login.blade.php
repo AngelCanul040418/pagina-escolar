@@ -4,7 +4,7 @@
             body {
                 background: #05031b;
                 font-family: 'Arial', sans-serif;
-                color: #fff;
+                color: #000013;
             }
 
             .card {
@@ -14,9 +14,11 @@
                 padding: 30px;
                 max-width: 500px;
                 margin: 50px auto;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 8px 16px rgba(97, 40, 40, 0.3);
+                /* Sombra más marcada */
                 animation: fadeIn 0.5s ease-in-out;
             }
+
 
             @keyframes fadeIn {
                 from {
@@ -199,7 +201,7 @@
                 @if (Route::has('password.request'))
                     <div class="forgot-password">
                         <a href="{{ route('password.request') }}">{{ __('¿Olvidaste tu contraseña?') }}</a>
-                        <a href="{{ route('register') }}">{{ __('Regístrate') }}</a>
+                        <a style="color: #E74C3C" href="{{ route('register') }}">{{ __('Regístrate') }}</a>
                     </div>
                 @endif
             </form>
