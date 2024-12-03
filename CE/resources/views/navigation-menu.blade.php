@@ -1,11 +1,11 @@
-<nav x-data="{ open: false }">
+<nav x-data="{ open: true }">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center mb-4">
-                    <h2 class="ml-3 text-xl font-bold text-red-800">Universidad Tecnológica del Poniente</h2>
+                    <h2 class="ml-3 text-3xl font-extrabold text-white">Universidad Tecnológica del Poniente</h2>
                 </div>
             </div>
 
