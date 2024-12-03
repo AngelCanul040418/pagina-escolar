@@ -26,75 +26,84 @@
 <body class="font-sans antialiased ">
 
     <div x-data="{ open: true }" class="flex min-h-screen">
-        <!-- Sidebar -->
         <aside id="sidebar" :class="open ? 'w-64' : 'w-20'"
             class="fixed top-0 left-0 text-white border-r shadow-lg transition-all bg-[#05031b] h-screen">
             <div class="p-3 h-full flex flex-col justify-between">
-                <!-- Top Section -->
-                <div>
-                    <!-- Toggle Button -->
-                    <button id="sidebar-toggle"
-                        class="flex items-center p-2 mb-6 transition-all bg-red-700 hover:bg-red-800 rounded-lg text-white"
-                        @click="open = !open" aria-expanded="true" aria-label="Toggle Sidebar">
-                        <i class="fas" :class="open ? 'fa-chevron-left' : 'fa-bars'"></i>
-                        <span class="ml-2 font-semibold text-sm" :class="open ? 'block' : 'hidden'">
-                            Universidad Tecnológica del Poniente
+
+                <!-- Top Section (Logo y Toggle) -->
+                <div class="flex flex-col items-center mb-6">
+                    <!-- Logo (centrado y con espacio arriba) -->
+                    <div class="mb-16"> <!-- Aumentamos el margen superior a 16 -->
+                        <img src="{{ asset('assets/images/logo-U_T_P.png') }}" alt="Logo" class="w-32">
+                    </div>
+
+                    <!-- Toggle Button and Menu Text -->
+                    <div class="flex items-center w-full justify-between mb-6">
+                        <!-- Texto Menu más grande -->
+                        <span class="text-white font-semibold text-lg" :class="open ? 'block' : 'hidden'">
+                            Menu
                         </span>
-                    </button>
 
-                    <!-- Navigation -->
-                    <nav>
-                        <ul class="space-y-3">
-                            @php
-                                $routes = [
-                                    ['name' => 'dashboard', 'icon' => 'fas fa-tachometer-alt', 'label' => 'Dashboard'],
-                                    [
-                                        'name' => 'usuarios.index',
-                                        'icon' => 'fas fa-users',
-                                        'label' => 'Tabla de Usuarios',
-                                    ],
-                                    [
-                                        'name' => 'oferta-educativa.index',
-                                        'icon' => 'fas fa-graduation-cap',
-                                        'label' => 'Oferta Educativa',
-                                    ],
-                                    [
-                                        'name' => 'mejor-oferta.index',
-                                        'icon' => 'fas fa-graduation-cap',
-                                        'label' => 'Mejor Oferta Educativa',
-                                    ],
-                                    [
-                                        'name' => 'servicios.index',
-                                        'icon' => 'fas fa-concierge-bell',
-                                        'label' => 'Servicios',
-                                    ],
-                                    ['name' => 'imagenes.index', 'icon' => 'fa-solid fa-images', 'label' => 'Imágenes'],
-                                ];
-                            @endphp
-
-                            @foreach ($routes as $route)
-                                <li>
-                                    <a href="{{ route($route['name']) }}"
-                                        class="group flex items-center p-2 rounded-lg transition-all 
-                                          {{ request()->routeIs($route['name']) ? 'bg-red-700 text-white' : 'text-gray-400 hover:bg-red-600 hover:text-white' }}">
-                                        <!-- Icon container -->
-                                        <div class="w-10 h-10 flex items-center justify-center">
-                                            <i
-                                                class="{{ $route['icon'] }} text-lg 
-                                                {{ request()->routeIs($route['name']) ? 'text-white' : 'group-hover:text-white' }}">
-                                            </i>
-                                        </div>
-                                        <!-- Label -->
-                                        <span class="ml-3 transition-all text-sm font-medium"
-                                            :class="open ? 'block' : 'hidden'">
-                                            {{ $route['label'] }}
-                                        </span>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </nav>
+                        <!-- Botón para abrir/cerrar el sidebar -->
+                        <button id="sidebar-toggle"
+                            class="flex items-center p-2 transition-all bg-red-700 hover:bg-red-800 rounded-lg text-white ml-auto"
+                            @click="open = !open" aria-expanded="true" aria-label="Toggle Sidebar">
+                            <i class="fas" :class="open ? 'fa-chevron-left' : 'fa-bars'"></i>
+                        </button>
+                    </div>
                 </div>
+
+                <!-- Línea divisoria entre el logo y las secciones -->
+                <div class="border-b border-gray-700 mb-6"></div> <!-- Línea divisoria -->
+
+                <!-- Navigation Links -->
+                <nav class="flex-grow">
+                    <ul class="space-y-3">
+                        @php
+                            $routes = [
+                                ['name' => 'dashboard', 'icon' => 'fas fa-tachometer-alt', 'label' => 'Dashboard'],
+                                ['name' => 'usuarios.index', 'icon' => 'fas fa-users', 'label' => 'Tabla de Usuarios'],
+                                [
+                                    'name' => 'oferta-educativa.index',
+                                    'icon' => 'fas fa-graduation-cap',
+                                    'label' => 'Oferta Educativa',
+                                ],
+                                [
+                                    'name' => 'mejor-oferta.index',
+                                    'icon' => 'fas fa-graduation-cap',
+                                    'label' => 'Mejor Oferta Educativa',
+                                ],
+                                [
+                                    'name' => 'servicios.index',
+                                    'icon' => 'fas fa-concierge-bell',
+                                    'label' => 'Servicios',
+                                ],
+                                ['name' => 'imagenes.index', 'icon' => 'fa-solid fa-images', 'label' => 'Imágenes'],
+                            ];
+                        @endphp
+
+                        @foreach ($routes as $route)
+                            <li class="border-b border-gray-700 pb-3"> <!-- Línea debajo de cada acceso -->
+                                <a href="{{ route($route['name']) }}"
+                                    class="group flex items-center p-2 rounded-lg transition-all 
+                                {{ request()->routeIs($route['name']) ? 'bg-red-700 text-white' : 'text-gray-400 hover:bg-red-600 hover:text-white' }}">
+                                    <!-- Icono -->
+                                    <div class="w-10 h-10 flex items-center justify-center">
+                                        <i
+                                            class="{{ $route['icon'] }} text-lg 
+                                    {{ request()->routeIs($route['name']) ? 'text-white' : 'group-hover:text-white' }}">
+                                        </i>
+                                    </div>
+                                    <!-- Label -->
+                                    <span class="ml-3 transition-all text-sm font-medium"
+                                        :class="open ? 'block' : 'hidden'">
+                                        {{ $route['label'] }}
+                                    </span>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </nav>
             </div>
         </aside>
 

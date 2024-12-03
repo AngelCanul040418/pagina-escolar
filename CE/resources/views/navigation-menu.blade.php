@@ -4,7 +4,8 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex items-center mb-4">
+                <img src="{{ asset('assets/images/logo-U_T_P.png') }}" alt="Logo">
+                <div class="flex items-start mb-4">
                     <h2 class="ml-3 text-3xl font-extrabold text-white">Universidad Tecnológica del Poniente</h2>
                 </div>
             </div>

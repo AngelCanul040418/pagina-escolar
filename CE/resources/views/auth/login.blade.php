@@ -2,13 +2,14 @@
     <x-authentication-card>
         <style>
             body {
-                background: linear-gradient(135deg, #4A90E2, #50BFE6);
+                background: #05031b;
                 font-family: 'Arial', sans-serif;
-                color: #333;
+                color: #fff;
             }
 
             .card {
-                background: white;
+                background: #05031b;
+                /* Azul para el fondo de la card externa */
                 border-radius: 10px;
                 padding: 30px;
                 max-width: 500px;
@@ -35,21 +36,26 @@
             }
 
             .card-header img {
-                max-width: 100px;
-                margin-bottom: 10px;
+                max-width: 180px;
+                /* Aumenté el tamaño del logo */
+                margin-bottom: 20px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                /* Alineación centrada */
             }
 
             .card-header h1 {
-                font-size: 20px;
-                color: #2C3E50;
+                font-size: 24px;
+                color: #fff;
                 margin-bottom: 10px;
                 font-weight: bold;
                 text-transform: uppercase;
             }
 
             .card-header h2 {
-                font-size: 24px;
-                color: #2C3E50;
+                font-size: 20px;
+                color: #fff;
                 margin-top: 10px;
             }
 
@@ -60,7 +66,8 @@
             .form-group label {
                 display: block;
                 font-size: 14px;
-                color: #34495E;
+                color: #fff;
+                /* Blanco para las etiquetas */
                 margin-bottom: 5px;
             }
 
@@ -74,15 +81,15 @@
             }
 
             .form-group input:focus {
-                border-color: #2980B9;
-                box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+                border-color: #E74C3C;
+                box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
                 outline: none;
             }
 
             .btn {
                 display: block;
                 width: 100%;
-                background: #2980B9;
+                background: #E74C3C;
                 color: white;
                 padding: 10px;
                 border: none;
@@ -93,21 +100,28 @@
             }
 
             .btn:hover {
-                background: #21618C;
+                background: #C0392B;
             }
 
+            .remember-me,
+            .forgot-password,
             .terms {
                 font-size: 14px;
-                color: #2980B9;
-                text-align: center;
+                color: #fff;
+                /* Blanco para los textos en los enlaces */
+                text-align: left;
                 margin-top: 15px;
             }
 
+            .remember-me input,
+            .forgot-password a,
             .terms a {
-                text-decoration: none;
-                color: #2980B9;
+                color: #fff;
+                /* Blanco para los enlaces */
             }
 
+            .remember-me a:hover,
+            .forgot-password a:hover,
             .terms a:hover {
                 text-decoration: underline;
             }
@@ -119,7 +133,7 @@
             }
 
             .already-registered a {
-                color: #2980B9;
+                color: #E74C3C;
                 text-decoration: none;
             }
 
@@ -141,7 +155,8 @@
         <div class="card">
             <!-- Título y logo -->
             <div class="card-header">
-                <h1 style="color: #E74C3C">UNIVERSIDAD TECNOLOGICA DEL PONIENTE</h1>
+                <img src="{{ asset('assets/images/logo-U_T_P.png') }}" alt="Logo">
+                <h1>UNIVERSIDAD TECNOLÓGICA DEL PONIENTE</h1>
                 <h2>Iniciar Sesión</h2>
             </div>
 
@@ -175,6 +190,7 @@
                     <input type="checkbox" id="remember_me" name="remember">
                     <label for="remember_me">{{ __('Recuérdame') }}</label>
                 </div>
+                <br>
 
                 <!-- Botón de inicio de sesión -->
                 <button type="submit" class="btn">{{ __('Iniciar Sesión') }}</button>
