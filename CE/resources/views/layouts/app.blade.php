@@ -111,12 +111,14 @@
         <main :class="open ? 'ml-64' : 'ml-20'" class="flex-1 bg-gray-100 h-screen transition-all">
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="text-white border-r shadow-lg transition-all bg-[#05031b]">
+                <header :class="open ? 'left-64' : 'left-20'"
+                    class="fixed top-0 w-full text-white border-b shadow-lg transition-all bg-[#05031b] z-50">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         @livewire('navigation-menu')
                     </div>
                 </header>
             @endif
+
             <!-- Page Content -->
             <div class="shadow h-full flex flex-col">
                 <!-- Header -->
@@ -124,11 +126,25 @@
                     {{ $header }}
                 </div>
                 <!-- Slot (contenido principal) -->
-                <div class="flex-grow p-6">
+                <div class="flex-grow p-6 bg-gray-200 shadow-lg">
                     {{ $slot }}
                 </div>
             </div>
+            <!-- Footer -->
+            <footer class="bg-[#05031b] text-white text-center py-4 shadow-lg">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <p>&copy; {{ now()->year }} Universidad Tecnológica del Poniente. Todos los derechos reservados.
+                    </p>
+                    <p>
+                        <a href="#" class="text-red-500 hover:underline">Política de privacidad</a> |
+                        <a href="#" class="text-red-500 hover:underline">Términos y condiciones</a>
+                    </p>
+                </div>
+            </footer>
         </main>
+
+
+
     </div>
 
     @stack('modals')
