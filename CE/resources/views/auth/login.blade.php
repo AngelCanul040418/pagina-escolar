@@ -5,27 +5,112 @@
                 background: #05031b;
                 font-family: 'Arial', sans-serif;
                 color: #000013;
+                position: relative; /* Necesario para las burbujas */
+                height: 100vh; /* Asegura que el body ocupe toda la pantalla */
+                margin: 0;
+                overflow: hidden; /* Para evitar que las burbujas se salgan de la pantalla */
+            }
+
+            /* Burbuja flotante */
+            .bubble {
+                position: absolute;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.3); /* Color suave para las burbujas */
+                animation: bubbleMove linear infinite;
+                z-index: 1; /* Para que las burbujas estén detrás del contenido */
+            }
+
+            /* Animación de las burbujas */
+            @keyframes bubbleMove {
+                0% {
+                    transform: translateY(100vh) scale(0.5);
+                    opacity: 0.7;
+                }
+                50% {
+                    transform: translateY(-10vh) scale(1.2);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) scale(0.5);
+                    opacity: 0;
+                }
+            }
+
+            /* Diferentes tamaños y posiciones para las burbujas */
+            .bubble:nth-child(1) {
+                width: 100px;
+                height: 100px;
+                left: 5%;
+                animation-duration: 15s;
+                animation-delay: 0s;
+            }
+
+            .bubble:nth-child(2) {
+                width: 120px;
+                height: 120px;
+                left: 20%;
+                animation-duration: 20s;
+                animation-delay: 0s;
+            }
+
+            .bubble:nth-child(3) {
+                width: 80px;
+                height: 80px;
+                left: 50%;
+                animation-duration: 12s;
+                animation-delay: 0s;
+            }
+
+            .bubble:nth-child(4) {
+                width: 90px;
+                height: 90px;
+                left: 80%;
+                animation-duration: 18s;
+                animation-delay: 0s;
+            }
+
+            .bubble:nth-child(5) {
+                width: 60px;
+                height: 60px;
+                left: 30%;
+                animation-duration: 22s;
+                animation-delay: 0s;
+            }
+
+            .bubble:nth-child(6) {
+                width: 110px;
+                height: 110px;
+                left: 70%;
+                animation-duration: 25s;
+                animation-delay: 0s;
+            }
+
+            .bubble:nth-child(7) {
+                width: 150px;
+                height: 150px;
+                left: 10%;
+                animation-duration: 30s;
+                animation-delay: 0s;
             }
 
             .card {
                 background: #05031b;
-                /* Azul para el fondo de la card externa */
                 border-radius: 10px;
                 padding: 30px;
                 max-width: 640px;
                 margin: 50px auto;
                 box-shadow: 0 8px 16px rgba(97, 40, 40, 0.3);
-                /* Sombra más marcada */
                 animation: fadeIn 0.5s ease-in-out;
+                position: relative;
+                z-index: 2; /* Para que la tarjeta quede encima de las burbujas */
             }
 
-
+            /* Animación de aparición */
             @keyframes fadeIn {
                 from {
                     opacity: 0;
                     transform: translateY(-20px);
                 }
-
                 to {
                     opacity: 1;
                     transform: translateY(0);
@@ -39,12 +124,10 @@
 
             .card-header img {
                 max-width: 180px;
-                /* Aumenté el tamaño del logo */
                 margin-bottom: 20px;
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
-                /* Alineación centrada */
             }
 
             .card-header h1 {
@@ -69,7 +152,6 @@
                 display: block;
                 font-size: 14px;
                 color: #fff;
-                /* Blanco para las etiquetas */
                 margin-bottom: 5px;
             }
 
@@ -110,7 +192,6 @@
             .terms {
                 font-size: 14px;
                 color: #fff;
-                /* Blanco para los textos en los enlaces */
                 text-align: left;
                 margin-top: 15px;
             }
@@ -119,7 +200,6 @@
             .forgot-password a,
             .terms a {
                 color: #fff;
-                /* Blanco para los enlaces */
             }
 
             .remember-me a:hover,
@@ -153,6 +233,15 @@
                 font-size: 14px;
             }
         </style>
+
+        <!-- Burbujas flotantes en el fondo -->
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
 
         <div class="card">
             <!-- Título y logo -->
