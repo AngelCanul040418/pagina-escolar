@@ -130,21 +130,7 @@
                     {{ $slot }}
                 </div>
             </div>
-            <!-- Footer -->
-            <footer class="bg-[#05031b] text-white text-center py-4 shadow-lg">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <p>&copy; {{ now()->year }} Universidad Tecnológica del Poniente. Todos los derechos reservados.
-                    </p>
-                    <p>
-                        <a href="#" class="text-red-500 hover:underline">Política de privacidad</a> |
-                        <a href="#" class="text-red-500 hover:underline">Términos y condiciones</a>
-                    </p>
-                </div>
-            </footer>
         </main>
-
-
-
     </div>
 
     @stack('modals')
@@ -217,6 +203,13 @@
                 text: message,
                 icon: "success"
             });
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            const header = document.querySelector("header");
+            const main = document.querySelector("main");
+            if (header && main) {
+                main.style.paddingTop = `${header.offsetHeight}px`;
+            }
         });
     </script>
 
