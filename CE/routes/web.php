@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\CrearOfertaComponente as LivewireCrearOfertaComponente;
 use App\Livewire\OfAdminComponente as LivewireOfAdminComponente;
 
+// Redirigir a la página de login en la raíz
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login'); // Redirige al login
 });
 
 Route::middleware([
