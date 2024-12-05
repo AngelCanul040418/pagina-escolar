@@ -12,12 +12,9 @@
     <div v-else>
       <div v-if="ofertas.length > 0" class="card oferta-card mx-auto shadow-lg">
         <div class="card-header text-white bg-primary text-center">
-          <h5 class="mb-0">Mejor Oferta</h5>
+          <h5 class="mb-0">{{ ofertas[ofertas.length - 1].oferta_educativa?.nombre || "N/A" }}</h5>
         </div>
         <div class="card-body">
-          <h4 class="card-title text-center mb-4">
-            {{ ofertas[ofertas.length - 1].oferta_educativa?.nombre || "N/A" }}
-          </h4>
           <p class="card-text">
             <strong>Etapa Inicial:</strong> {{ ofertas[ofertas.length - 1].etapa_inicial }}
           </p>

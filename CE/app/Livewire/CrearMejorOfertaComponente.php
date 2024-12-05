@@ -25,6 +25,7 @@ class CrearMejorOfertaComponente extends Component
             'oferta_educativa_id' => $this->oferta_educativa_id,
             'etapa_inicial' => $oferta->etapa_inicial,
             'etapa_continuidad' => $oferta->etapa_continuidad,
+            
         ]);
 
         $this->reset(['oferta_educativa_id']);

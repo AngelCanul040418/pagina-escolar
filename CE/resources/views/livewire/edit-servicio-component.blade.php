@@ -32,17 +32,15 @@
                 @enderror
             </div>
 
-            <!-- Imagen Actual -->
             <div class="mb-4">
-                <x-label value="Imagen Actual" />
+                <x-label value="Imagen Actual o Nueva" />
                 @if ($path)
-                    <img src="{{ $path }}" alt="Imagen actual" class="w-32 h-32 object-cover mt-2" />
+                    <img src="{{ $path }}" alt="Previsualización de la imagen" class="w-32 h-32 object-cover mt-2" />
                 @else
-                    <span>No hay imagen actual.</span>
+                    <span>No hay imagen para mostrar.</span>
                 @endif
             </div>
-
-            <!-- Cargar Nueva Imagen -->
+            
             <div class="mb-4">
                 <x-label value="Cargar Nueva Imagen" />
                 <x-input type="file" class="w-full mt-2" accept="image/*" wire:model="newImage" />
@@ -50,6 +48,7 @@
                     <span class="text-sm text-red-600">{{ $message }}</span>
                 @enderror
             </div>
+            
         </x-slot>
 
         <x-slot name="footer">

@@ -35,7 +35,17 @@
     <!-- Main Content -->
     <div class="content p-4 bg-white rounded shadow-sm">
       <router-view />
+      
+      <!-- Authorities Section -->
+      
     </div>
+
+    <!-- Footer -->
+    <footer class="footer text-center bg-dark text-white p-2">
+      <div class="container">
+        <p class="mb-0">Universidad Tecnológica del Poniente - Todos los derechos reservados</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -66,7 +76,7 @@
 
 .navbar .logo {
   width: 50px;
-  height: auto; /* Opcional */
+  height: auto;
 }
 
 .navbar h2 {
@@ -110,5 +120,21 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
   flex-grow: 1;
+}
+
+
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  position: relative;
+  width: 100%;
+}
+
+.footer .container p {
+  margin-bottom: 0;
+  font-size: 0.875rem;
 }
 </style>
