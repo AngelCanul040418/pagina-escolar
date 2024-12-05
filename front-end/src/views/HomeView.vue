@@ -292,7 +292,7 @@ export default {
 
 .quick-access h4 {
   font-size: 1.2rem;
-  color: #666;
+  color: #5a5959;
   font-weight: 400;
   max-width: 800px;
   margin: 0 auto 30px;
@@ -328,7 +328,7 @@ export default {
 .card:hover {
   background-color: #f0f0f0;
   transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgb(131, 130, 130);
+  box-shadow: 0 4px 8px rgb(0, 0, 0);
 }
 
 .icon-box {
