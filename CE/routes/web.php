@@ -32,4 +32,5 @@ Route::middleware([
     // Rutas para los componentes Livewire
     Route::get('/crear-oferta', LivewireCrearOfertaComponente::class)->name('crear.oferta');
     Route::get('/ofertas-admin', LivewireOfAdminComponente::class)->name('ofertas.admin');
+    
 });
