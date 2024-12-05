@@ -19,6 +19,7 @@ class EditOfertaModal extends Component
         $duracion_cuatri_con, $duracion_total_programa,
         $horas_totales, $creditos_totales;
     public $mapa_curricular;
+    public $imagen;
 
     public function mount(OfertaEducativa $oferta)
     {
@@ -35,6 +36,7 @@ class EditOfertaModal extends Component
         'horas_totales' => 'required|integer',
         'creditos_totales' => 'required|integer',
         'mapa_curricular' => 'nullable|file|mimes:pdf',
+        'imagen' => 'nullable|image|max:10240', // Nueva regla para la imagen
     ];
 
     protected $listeners = ['editOferta' => 'loadOferta'];
@@ -53,15 +55,24 @@ class EditOfertaModal extends Component
             $this->horas_totales = $oferta->horas_totales;
             $this->creditos_totales = $oferta->creditos_totales;
             $this->mapa_curricular = null; // No asignar el archivo actual
+            $this->imagen = null; // No asignar la imagen actual
             $this->open = true;
         }
     }
-
 
     public function updated($propertyName)
     {
         if ($propertyName === 'duracion_cuatri_in' || $propertyName === 'duracion_cuatri_con') {
             $this->duracion_total_programa = $this->duracion_cuatri_in + $this->duracion_cuatri_con;
+        }
+    }
+
+    public function updatedImagen()
+    {
+        if ($this->imagen instanceof TemporaryUploadedFile) {
+            $this->validate([
+                'imagen' => 'nullable|image|max:10240',
+            ]);
         }
     }
 
@@ -80,6 +91,28 @@ class EditOfertaModal extends Component
             'creditos_totales' => $this->creditos_totales,
         ];
 
+        // Manejo de la imagen
+        if ($this->imagen instanceof TemporaryUploadedFile) {
+            // Eliminar imagen anterior si existe
+            if ($this->oferta->imagen) {
+                Storage::disk('public')->delete($this->oferta->imagen);
+            }
+
+            // Crear nombre personalizado para la nueva imagen
+            $fileName = 'imagen_' . str_replace(['í', 'ñ', ' '], ['i', 'n', '_'], $this->nombre) . '.' . $this->imagen->extension();
+
+            // Guardar la imagen con el nombre personalizado
+            $data['imagen'] = $this->imagen->storeAs('ofertas_imagenes', $fileName, 'public');
+        }
+        // Si solo cambia el nombre, renombrar la imagen sin subir una nueva
+        elseif ($this->oferta->nombre !== $this->nombre && $this->oferta->imagen) {
+            $oldPath = $this->oferta->imagen;
+            $newPath = 'ofertas_imagenes/imagen_' . str_replace(['í', 'ñ', ' '], ['i', 'n', '_'], $this->nombre) . '.' . pathinfo($oldPath, PATHINFO_EXTENSION);
+
+            Storage::disk('public')->move($oldPath, $newPath);
+            $data['imagen'] = $newPath;
+        }
+
         // Solo manejar el archivo si se ha subido uno nuevo
         if ($this->mapa_curricular instanceof TemporaryUploadedFile) {
             // Eliminar archivo anterior si existe
@@ -97,13 +130,13 @@ class EditOfertaModal extends Component
         $this->oferta->update($data);
 
         // Reiniciar campos y cerrar modal
-        $this->reset(['open', 'mapa_curricular']);
+        $this->reset(['open', 'mapa_curricular', 'imagen']);
 
         // Emitir evento para actualizar la tabla
-        $this->dispatch('ofertaUpdated')->to(OfAdminComponente::class);
+        $this->oferta->refresh(); // Refresca la instancia del modelo
+        $this->dispatch('ofertaUpdated')->to(OfAdminComponente::class); // Asegura que se emite correctamente
         $this->dispatch('alert', '¡La Oferta se ha Editado Exitosamente!');
     }
-
 
     public function render()
     {

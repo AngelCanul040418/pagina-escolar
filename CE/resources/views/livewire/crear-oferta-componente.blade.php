@@ -83,6 +83,23 @@
                 @enderror
             </div>
 
+            <!-- Imagen -->
+            <div class="mb-4">
+                <x-label value="Imagen de la Oferta" />
+                <x-input type="file" class="w-full" accept="image/*" wire:model="imagen"></x-input>
+                @error('imagen')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
+                <!-- Previsualización -->
+                @if ($imagen)
+                    <div class="mt-2">
+                        <span>Previsualización:</span>
+                        <img src="{{ $imagen->temporaryUrl() }}" alt="Previsualización de la imagen"
+                            class="w-32 h-32 object-cover mt-2">
+                    </div>
+                @endif
+            </div>
+
             <!-- Mapa Curricular (archivo PDF) -->
             <div class="mb-4">
                 <x-label value="Mapa Curricular" />

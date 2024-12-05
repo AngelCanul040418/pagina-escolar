@@ -9,6 +9,7 @@
                 <th class="px-6 py-3 text-left font-semibold text-sm uppercase">Duración Continuidad</th>
                 <th class="px-6 py-3 text-left font-semibold text-sm uppercase">Duración Total</th>
                 <th class="px-6 py-3 text-left font-semibold text-sm uppercase">Horas Totales</th>
+                <th class="px-6 py-3 text-left font-semibold text-sm uppercase">Imagen</th>
                 <th class="px-6 py-3 text-left font-semibold text-sm uppercase">Créditos Totales</th>
                 <th class="px-6 py-3 text-center font-semibold text-sm uppercase">Acciones</th>
             </tr>
@@ -23,6 +24,15 @@
                     <td class="border px-6 py-4 text-gray-800">{{ $oferta->duracion_cuatri_con }}</td>
                     <td class="border px-6 py-4 text-gray-800">{{ $oferta->duracion_total_programa }}</td>
                     <td class="border px-6 py-4 text-gray-800">{{ $oferta->horas_totales }}</td>
+                    <td class="border px-6 py-4 text-gray-800">
+                        @if ($oferta->imagen)
+                            <img src="{{ Storage::url($oferta->imagen) }}?v={{ now()->timestamp }}"
+                                alt="Imagen de oferta">
+                        @else
+                            <span class="text-gray-500">Sin imagen</span>
+                        @endif
+                    </td>
+
                     <td class="border px-6 py-4 text-gray-800">{{ $oferta->creditos_totales }}</td>
                     <td class="border px-6 py-4 text-center">
                         <x-secondary-button wire:click="editOferta({{ $oferta->id }})"

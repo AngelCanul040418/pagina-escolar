@@ -22,29 +22,6 @@ class ImageCrud extends Component
         return view('livewire.image-crud', ['imagenes' => $this->imagenes]);
     }
 
-    public function add(Request $request)
-    {
-        $this->validate([
-            'title' => 'required',
-            'path' => 'required|image|max:1024', // Máximo 1MB
-        ]);
-
-        // Guardar la imagen en el almacenamiento y obtener la ruta
-        $path = $request->file('path')->store('images', 'public');
-
-        $image = Image::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'path' => $path,
-        ]);
-
-        $data = [
-            'image' => $image,
-            'status' => 200
-        ];
-        return response()->json($data, 200);
-    }
-
     public function editImage($imageId)
     {
         $this->dispatch('editImage', $imageId);
@@ -74,6 +51,28 @@ class ImageCrud extends Component
         ];
 
         // Retorna la respuesta en formato JSON
+        return response()->json($data, 200);
+    }
+    public function add(Request $request)
+    {
+        $this->validate([
+            'title' => 'required',
+            'path' => 'required|image|max:1024', // Máximo 1MB
+        ]);
+
+        // Guardar la imagen en el almacenamiento y obtener la ruta
+        $path = $request->file('path')->store('images', 'public');
+
+        $image = Image::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'path' => $path,
+        ]);
+
+        $data = [
+            'image' => $image,
+            'status' => 200
+        ];
         return response()->json($data, 200);
     }
 }

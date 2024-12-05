@@ -78,6 +78,34 @@
                 @enderror
             </div>
 
+            <!-- Imagen (nueva funcionalidad) -->
+            <div class="mb-4">
+                <x-label value="Imagen de Oferta" />
+
+                <!-- Mostrar vista previa de la imagen existente -->
+                @if (!$imagen && $oferta->imagen)
+                    <div class="mt-2">
+                        <img src="{{ Storage::url($oferta->imagen) }}"
+                            class="w-32 h-32 object-cover border border-gray-300" />
+                    </div>
+                @endif
+
+                <!-- Mostrar vista previa de la nueva imagen cargada -->
+                @if ($imagen)
+                    <div class="mt-2">
+                        <img src="{{ $imagen->temporaryUrl() }}"
+                            class="w-32 h-32 object-cover border border-gray-300" />
+                    </div>
+                @endif
+
+                <!-- Campo para cargar nueva imagen -->
+                <x-input type="file" class="w-full mt-2" accept="image/*" wire:model="imagen"></x-input>
+                @error('imagen')
+                    <span class="text-sm text-red-600">{{ $message }}</span>
+                @enderror
+            </div>
+
+
             <!-- Mapa Curricular (archivo PDF) -->
             <div class="mb-4">
                 <x-label value="Mapa Curricular" />
@@ -95,7 +123,6 @@
                     <span class="text-sm text-red-600">{{ $message }}</span>
                 @enderror
             </div>
-
 
         </x-slot>
 

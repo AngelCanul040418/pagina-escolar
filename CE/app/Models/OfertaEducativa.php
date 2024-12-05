@@ -20,7 +20,8 @@ class OfertaEducativa extends Model
         'horas_totales',
         'creditos_totales',
         'duracion_total_programa',
-        'mapa_curricular'
+        'mapa_curricular',
+        'imagen'
     ];
 
     public function cuatriIns()
