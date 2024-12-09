@@ -5,6 +5,7 @@ import MejorOferta from '@/views/MejorOferta.vue'
 import UsuariosTable from '@/views/UsuariosTable.vue'
 import Servicios from '@/views/Servicios.vue'
 import Carrusel_de_imagenes from '@/views/Carrusel_de_imagenes.vue'
+import Contactos from '@/views/Contactos.vue'
 
 const routes = [
   {
@@ -44,7 +45,13 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  },
+  {
+    path: '/Contactos',
+    name: 'Contactos',
+    component: Contactos
+  },
+
 ]
 
 const router = createRouter({

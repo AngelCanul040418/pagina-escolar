@@ -1,6 +1,6 @@
-<div class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
-        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Ofertas</h1> <!-- Título de la página -->
+
+    <div class="w-full max-w-6xl bg-white rounded-lg shadow-xl p-8">
+        <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Ofertas</h1> <!-- Título de la página -->
 
         <div class="relative">
             <canvas id="usuariosChart" style="height: 400px; width: 100%;"></canvas>
@@ -11,10 +11,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             const ctx = document.getElementById('usuariosChart').getContext('2d');
 
-            // Colores configurables
-            const baseColor = 'rgba(54, 162, 235, 0.7)'; // Azul claro
-            const hoverColor = 'rgba(255, 99, 132, 0.8)'; // Rojo al pasar el mouse
-            const borderColor = 'rgba(54, 162, 235, 1)';  // Azul borde
+            // Definir colores base para el gradiente
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(54, 162, 235, 1)');  // Azul más fuerte en la parte superior
+            gradient.addColorStop(1, 'rgba(54, 162, 235, 0.3)');  // Azul más suave en la parte inferior
 
             // Configuración del gráfico
             const usuariosChart = new Chart(ctx, {
@@ -22,14 +22,19 @@
                 data: {
                     labels: @json($etiquetas), // Etiquetas dinámicas
                     datasets: [{
-                        label: '',
+                        label: 'Horas Totales', // Nombre del dataset
                         data: @json($horasTotales), // Datos dinámicos
-                        backgroundColor: baseColor, // Color base
-                        borderColor: borderColor,   // Color del borde
+                        backgroundColor: gradient, // Gradiente para simular volumen
+                        borderColor: 'rgba(54, 162, 235, 1)', // Azul borde
                         borderWidth: 2,
-                        borderRadius: 10,          // Bordes redondeados
-                        hoverBackgroundColor: hoverColor, // Color al pasar el mouse
-                        hoverBorderColor: hoverColor      // Borde al pasar el mouse
+                        borderRadius: 10, // Bordes redondeados para suavizar
+                        // Efecto de sombra para simular 3D
+                        shadowOffsetX: 5,
+                        shadowOffsetY: 5,
+                        shadowBlur: 15,
+                        shadowColor: 'rgba(0, 0, 0, 0.3)', // Sombra oscura
+                        hoverBackgroundColor: 'rgba(255, 99, 132, 0.8)', // Rojo al pasar el mouse
+                        hoverBorderColor: 'rgba(255, 99, 132, 1)',      // Borde al pasar el mouse
                     }]
                 },
                 options: {
@@ -38,6 +43,7 @@
                     plugins: {
                         legend: {
                             display: true,
+                            position: 'top',
                             labels: {
                                 color: '#333',
                                 font: {
@@ -50,7 +56,7 @@
                             backgroundColor: 'rgba(0, 0, 0, 0.7)',
                             titleColor: '#fff',
                             bodyColor: '#fff',
-                            padding: 10,
+                            padding: 12,
                             borderColor: '#333',
                             borderWidth: 1,
                             cornerRadius: 8
@@ -85,4 +91,3 @@
             });
         });
     </script>
-</div>

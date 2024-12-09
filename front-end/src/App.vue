@@ -1,4 +1,6 @@
 <template>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
   <div id="app" class="min-vh-100 bg-light">
     <header class="navbar text-white p-3 shadow-lg">
       <div class="d-flex align-items-center">
@@ -8,10 +10,10 @@
       <nav class="d-flex justify-content-center mt-3">
         <ul class="nav">
           <li class="nav-item">
-            <router-link to="/" class="nav-link text-white">Home</router-link>
+            <router-link to="/" class="nav-link text-white">Inicio</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/about" class="nav-link text-white">About</router-link>
+            <router-link to="/about" class="nav-link text-white">Conocenos</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/ofertas" class="nav-link text-white">Ofertas Educativas</router-link>
@@ -22,11 +24,9 @@
           <li class="nav-item">
             <router-link to="/servicios" class="nav-link text-white">Servicios</router-link>
           </li>
+
           <li class="nav-item">
-            <router-link to="/carrusel_de_imagenes" class="nav-link text-white">Imagenes</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/usuarios" class="nav-link text-white">Usuarios Registrados</router-link>
+            <router-link to="/Contactos" class="nav-link text-white">Contactos</router-link>
           </li>
         </ul>
       </nav>
@@ -41,11 +41,37 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer text-center bg-dark text-white p-2">
-      <div class="container">
-        <p class="mb-0">Universidad Tecnológica del Poniente - Todos los derechos reservados</p>
-      </div>
-    </footer>
+    <footer class="footer text-center bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white py-4">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-2 md:mb-0">
+                <p class="text-sm md:text-base">
+                    © 2024 Universidad Tecnológica del Poniente - Todos los derechos reservados
+                </p>
+            </div>
+            <div class="flex space-x-4">
+                <!-- Enlaces a redes sociales -->
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-facebook-f"></i>
+
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-4 pt-2 text-xs text-gray-500">
+            <p>Hecho con ❤️ por el equipo de desarrollo web</p>
+        </div>
+    </div>
+</footer>
+
   </div>
 </template>
 
